@@ -82,42 +82,8 @@ return packer.startup(function(use)
     ----------------------------
     -- LSP and Autocompletion --
     --                        --
-    --         TODO           --
+    --      EXPERIMENTAL      --
     ----------------------------
-    
-    local lsp_method = "none"
-    
-    if lsp_method == "manual" then
-    ----
-    -- Option 1 : Manual setup
-    ----
-    
-    --[[
-    -- LSP support
-    use 'neovim/nvim-lspconfig'
-
-    -- LSP manager
-    use 'williamboman/mason.nvim'
-    use 'williamboman/mason-lspconfig.nvim'
-
-    -- Autocompletion engine
-    use 'hrsh7th/nvim-cmp' -- Completion engine
-    
-    -- Autocompletion sources
-    use 'hrsh7th/cmp-nvim-lsp' -- LSP plugin for CMP
-    use 'hrsh7th/cmp-nvim-lsp-signature-help' -- Display method signatures
-    use 'hrsh7th/cmp-buffer' -- Buffer contents
-    use 'hrsh7th/cmp-path' -- File/folder paths
-    use 'kdheepak/cmp-latex-symbols' -- Latex symbols
-
-    -- Snippets
-    ]]--
-
-    elseif lsp_method == "auto" then
-    ----
-    -- Option 2 : Autosetup
-    ----
-    --[[
     use {
         'VonHeikemen/lsp-zero.nvim',
         requires = {
@@ -130,8 +96,8 @@ return packer.startup(function(use)
             {'hrsh7th/nvim-cmp'},
             {'hrsh7th/cmp-buffer'},
             {'hrsh7th/cmp-path'},
-            {'saadparwaiz1/cmp_luasnip'},
             {'hrsh7th/cmp-nvim-lsp'},
+            {'saadparwaiz1/cmp_luasnip'},
             {'hrsh7th/cmp-nvim-lua'},
 
             -- Snippets
@@ -139,8 +105,6 @@ return packer.startup(function(use)
             {'rafamadriz/friendly-snippets'},
         }
     }
-    ]]--
-    end
 
 	-- Let packer autoconfig if it was bootstrapped
 	if packer_bootstrap then

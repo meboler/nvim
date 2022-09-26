@@ -21,12 +21,6 @@ vim.g.mapleader = ';'
 map('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true } )
 map('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true } )
 
--- Move between splits
-map('', '<C-h>', '<C-w>h')
-map('', '<C-j>', '<C-w>j')
-map('', '<C-k>', '<C-w>k')
-map('', '<C-l>', '<C-w>l')
-
 -- Open/Close built-in terminal
 map('n', '<leader>t', ':terminal<CR>')
 map('t', '<Esc>', '<C-\\><C-n>')

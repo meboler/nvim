@@ -26,6 +26,7 @@ require('core/colors')
 -- Load plugin configs --
 -------------------------
 require('plugins/gitsigns')
+require('plugins/lspzero')
 require('plugins/lualine')
 require('plugins/nvim_tree')
 require('plugins/shade')
