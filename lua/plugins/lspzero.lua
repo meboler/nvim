@@ -9,4 +9,13 @@ end
 
 lspzero.preset('recommended')
 
+-- Add latex symbols to sources
+local cmp_sources = lspzero.defaults.cmp_sources()
+
+table.insert(cmp_sources, {name = 'latex_symbols'})
+
+lspzero.setup_nvim_cmp({
+    sources = cmp_sources
+})
+
 lspzero.setup()

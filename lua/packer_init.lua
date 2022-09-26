@@ -9,7 +9,7 @@ local cmd = vim.cmd
 local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 
 if fn.empty(fn.glob(install_path)) > 0 then
-	packer_bootstrap = fn.system({
+	PACKER_BOOTSTRAP = fn.system({
 		'git',
 		'clone',
 		'--depth',
@@ -37,7 +37,7 @@ end
 return packer.startup(function(use)
 	-- Let Packer manage itself
 	use 'wbthomason/packer.nvim'
-	
+
 	-- My custom theme
 	use 'mattboler/neovim-ayaru'
 
@@ -55,7 +55,7 @@ return packer.startup(function(use)
 
 	-- Fuzzy finder
 	use {
-		'nvim-telescope/telescope.nvim', 
+		'nvim-telescope/telescope.nvim',
 		branch = '0.1.x',
 		requires = {
 			{'nvim-lua/plenary.nvim'},
@@ -78,11 +78,9 @@ return packer.startup(function(use)
             {'nvim-lua/plenary.nvim'}
         }
     }
-    
+
     ----------------------------
     -- LSP and Autocompletion --
-    --                        --
-    --      EXPERIMENTAL      --
     ----------------------------
     use {
         'VonHeikemen/lsp-zero.nvim',
@@ -96,18 +94,18 @@ return packer.startup(function(use)
             {'hrsh7th/nvim-cmp'},
             {'hrsh7th/cmp-buffer'},
             {'hrsh7th/cmp-path'},
-            {'hrsh7th/cmp-nvim-lsp'},
             {'saadparwaiz1/cmp_luasnip'},
+            {'hrsh7th/cmp-nvim-lsp'},
             {'hrsh7th/cmp-nvim-lua'},
+            {'kdheepak/cmp-latex-symbols'},
 
             -- Snippets
             {'L3MON4D3/LuaSnip'},
             {'rafamadriz/friendly-snippets'},
         }
     }
-
 	-- Let packer autoconfig if it was bootstrapped
-	if packer_bootstrap then
+	if PACKER_BOOTSTRAP then
 		require('packer').sync()
 	end
 end)
