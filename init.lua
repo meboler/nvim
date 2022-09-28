@@ -5,30 +5,22 @@
 -- Author: Matt Boler
 -- Email:  failtolaunch28@gmail.com
 
+-- Check for version compatibility
 if vim.version().minor < 7 then
 	vim.notify('Neovim 0.7+ required', vim.log.levels.ERROR, { title = 'Neovim Config' })
 end
 
----------------------------------------
--- Load plugins before anything else --
----------------------------------------
-require('packer_init')
+-- Load modules on command
+local load = function(mod)
+    package.loaded[mod] = nil
+    require(mod)
+end
 
 ------------------------------
--- Load core editor configs --
+-- Load user editor configs --
 ------------------------------
-require('core/options')
-require('core/autocmds')
-require('core/keymaps')
-require('core/colors')
-
--------------------------
--- Load plugin configs --
--------------------------
-require('plugins/gitsigns')
-require('plugins/lspzero')
-require('plugins/lualine')
-require('plugins/nvim_tree')
-require('plugins/shade')
-require('plugins/telescope')
-require('plugins/treesitter')
+load('user/plugins')
+load('user/options')
+load('user/autocmds')
+load('user/keymaps')
+load('user/colors')
