@@ -17,8 +17,9 @@ opt.swapfile = false
 ----
 opt.number = true         -- Show line number
 opt.showmatch = true      -- Highlight matching brackets
+opt.cursorline = true     -- Highlight the line the curor is on
 opt.foldmethod = 'marker' -- Enable folding
-opt.colorcolumn = '80'    -- Line length marker at 80 columns
+--opt.colorcolumn = '80'    -- Line length marker at 80 columns
 opt.splitright = true     -- Open vertical splits to the right
 opt.splitbelow = true     -- Open horizontal splits to the bottom
 opt.ignorecase = true     -- Ignore case while searching

@@ -2,8 +2,8 @@
 -- Color scheme configuration file --
 -------------------------------------
 
-require('ayaru').setup({
-	mirage=true,
-	overrides={},
+require('ayu').setup({
+    mirage = true,
+    overrides = {},
 })
-require('ayaru').colorscheme()
+require('ayu').colorscheme()

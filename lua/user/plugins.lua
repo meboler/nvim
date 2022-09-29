@@ -2,10 +2,6 @@
 -- Plugin Management Configuration File --
 ------------------------------------------
 
----
--- Usage:
----
-
 -- Bootstrap the package manager if needed
 local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 local boostrap_packer = false
@@ -42,8 +38,9 @@ packer.startup(function(use)
     -- Let packer manage itself
 	use 'wbthomason/packer.nvim'
 
-    -- My custom theme
+    -- Custom themes
     use 'mattboler/neovim-ayaru'
+    use 'ofirgall/ofirkai.nvim'
 
     -- Pretty statusline
     use {

@@ -9,7 +9,7 @@ end
 
 lualine.setup({
     options = {
-        theme = 'ayaru',
+        theme = 'ayu',
     },
     sections = {
         lualine_a = {'mode'},
