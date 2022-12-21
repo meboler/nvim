@@ -98,15 +98,6 @@ packer.startup(function(use)
         config = configure('plugins.telescope'),
 	}
 
-    -- Git status symbols
-    use {
-        'lewis6991/gitsigns.nvim',
-		requires = {
-			{'nvim-lua/plenary.nvim'},
-		},
-        config = configure('plugins.gitsigns'),
-    }
-
     -- File explorer
 	use {
 		'kyazdani42/nvim-tree.lua',
