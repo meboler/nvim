@@ -35,35 +35,56 @@ local configure = function(path)
 end
 
 packer.startup(function(use)
-    -- Let packer manage itself
+    -- Package Manager
 	use 'wbthomason/packer.nvim'
 
+    -- LSP Configuration & Plugins
+    use {
+        'neovim/nvim-lspconfig',
+        requires = {
+            -- Automatically install LSPs
+            'williamboman/mason.nvim',
+            'williamboman/mason-lspconfig.nvim',
+
+            -- Status updates for LSPs
+            'j-hui/fidget.nvim',
+
+            -- Additional lua configs
+            'folke/neodev.nvim'
+        }
+    }
+
+    -- Autocompletion
+    use {
+        'hrsh7th/nvim-cmp',
+        requires = {
+            'hrsh7th/cmp-nvim-lsp', 
+            'L3MON4D3/LuaSnip',
+            'saadparwaiz1/cmp_luasnip'
+        }
+    }
+
+    -- Highlight, edit, and navigate code
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = function()
+            pcall(require('nvim-treesitter.install').update {with_sync = true})
+        end
+    }
+
+    -- Additional text objects for treesitter
+    use {
+        'nvim-treesitter/nvim-treesitter-textobjects',
+        after = 'nvim-treesitter'
+    }
+
     -- Custom themes
-    use 'mattboler/neovim-ayaru'
-    use 'ofirgall/ofirkai.nvim'
+    use 'nyoom-engineering/oxocarbon.nvim'
 
     -- Pretty statusline
     use {
         'nvim-lualine/lualine.nvim',
         config = configure('plugins.lualine'),
-    }
-
-    -- Indent guides
-    use {
-        'lukas-reineke/indent-blankline.nvim',
-        config = configure('plugins.indent-blankline'),
-    }
-
-    -- Dim inactive windows
-    use {
-        'sunjon/Shade.nvim',
-        config = configure('plugin.shade'),
-    }
-
-    -- Better text parsing
-    use {
-        'nvim-treesitter/nvim-treesitter',
-        config = configure('plugins.treesitter'),
     }
 
     -- Fuzzy finder
@@ -89,41 +110,11 @@ packer.startup(function(use)
     -- File explorer
 	use {
 		'kyazdani42/nvim-tree.lua',
-	  	requires = {
-			{'kyazdani42/nvim-web-devicons'},
-	  	},
+        requires = {
+            'nvim-tree/nvim-web-devicons',
+        },
         config = configure('plugins.nvim-tree'),
 	}
-
-    -- Terminal management
-    use {
-        'akinsho/toggleterm.nvim',
-        config = configure('plugins.toggleterm'),
-    }
-
-    -- Autocompletion
-    use {
-        'VonHeikemen/lsp-zero.nvim',
-        requires = {
-            -- LSP Support
-            {'neovim/nvim-lspconfig'},
-            {'williamboman/mason.nvim'},
-            {'williamboman/mason-lspconfig.nvim'},
-
-            -- Autocompletion
-            {'hrsh7th/nvim-cmp'},
-            {'hrsh7th/cmp-buffer'},
-            {'hrsh7th/cmp-path'},
-            {'saadparwaiz1/cmp_luasnip'},
-            {'hrsh7th/cmp-nvim-lsp'},
-            {'hrsh7th/cmp-nvim-lua'},
-
-            -- Snippets
-            {'L3MON4D3/LuaSnip'},
-            {'rafamadriz/friendly-snippets'},
-        },
-        config = configure('plugins.lsp-zero'),
-    }
 
 end)
 

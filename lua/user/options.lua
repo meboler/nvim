@@ -19,7 +19,6 @@ opt.number = true         -- Show line number
 opt.showmatch = true      -- Highlight matching brackets
 opt.cursorline = true     -- Highlight the line the curor is on
 opt.foldmethod = 'marker' -- Enable folding
---opt.colorcolumn = '80'    -- Line length marker at 80 columns
 opt.splitright = true     -- Open vertical splits to the right
 opt.splitbelow = true     -- Open horizontal splits to the bottom
 opt.ignorecase = true     -- Ignore case while searching
@@ -32,12 +31,12 @@ opt.sidescrolloff = 8     -- ... and horizontally
 ----
 -- Tabs and indents
 ----
-opt.expandtab = true   -- Use spaces instead of tabs
-opt.shiftwidth = 4     -- An indent is 4 spaces
-opt.tabstop = 4        -- A tab is 4 spaces
-opt.smartindent = true -- Autoindent new lines
+opt.expandtab = true      -- Use spaces instead of tabs
+opt.shiftwidth = 4        -- An indent is 4 spaces
+opt.tabstop = 4           -- A tab is 4 spaces
+opt.smartindent = true    -- Autoindent new lines
 
 ----
 -- Performance
 ----
-opt.lazyredraw = true -- Faster scrolling
+opt.lazyredraw = true     -- Faster scrolling
