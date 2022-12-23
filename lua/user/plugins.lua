@@ -17,7 +17,6 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
         packer_repo_url,
         install_path
     })
-    --vim.o.runtimepath = fn.stdpath('data') .. '/site/pack/*/start/*,' .. vim.o.runtimepath
     print('Done.')
     vim.cmd('packadd packer.nvim')
     boostrap_packer = true
@@ -69,7 +68,8 @@ packer.startup(function(use)
         'nvim-treesitter/nvim-treesitter',
         run = function()
             pcall(require('nvim-treesitter.install').update {with_sync = true})
-        end
+        end,
+        config = configure('plugins.treesitter')
     }
 
     -- Additional text objects for treesitter
