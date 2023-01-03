@@ -71,8 +71,6 @@ packer.startup(function(use)
         end,
         config = configure('plugins.treesitter')
     }
-
-    -- Additional text objects for treesitter
     use {
         'nvim-treesitter/nvim-treesitter-textobjects',
         after = 'nvim-treesitter'
@@ -107,6 +105,12 @@ packer.startup(function(use)
         config = configure('plugins.nvim-tree'),
 	}
 
+    -- Better notes inside comments
+    use {
+        'folke/todo-comments.nvim',
+        requires = 'nvim-lua/plenary.nvim',
+        config = configure('plugins.todo-comments'),
+    }
 end)
 
 if boostrap_packer then
