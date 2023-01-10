@@ -35,22 +35,32 @@ end
 
 packer.startup(function(use)
     -- Package Manager
-	use 'wbthomason/packer.nvim'
+    use 'wbthomason/packer.nvim'
 
     -- LSP Configuration & Plugins
     use {
-        'neovim/nvim-lspconfig',
+        'VonHeikemen/lsp-zero.nvim',
         requires = {
-            -- Automatically install LSPs
-            'williamboman/mason.nvim',
-            'williamboman/mason-lspconfig.nvim',
+            -- LSP Support
+            {'neovim/nvim-lspconfig'},
+            {'williamboman/mason.nvim'},
+            {'williamboman/mason-lspconfig.nvim'},
 
-            -- Status updates for LSPs
-            'j-hui/fidget.nvim',
+            -- Autocompletion
+            {'hrsh7th/nvim-cmp'},
+            {'hrsh7th/cmp-buffer'},
+            {'hrsh7th/cmp-path'},
+            {'saadparwaiz1/cmp_luasnip'},
+            {'hrsh7th/cmp-nvim-lsp'},
+            {'hrsh7th/cmp-nvim-lua'},
 
-            -- Additional lua configs
-            'folke/neodev.nvim'
-        }
+            -- Snippets
+            {'L3MON4D3/LuaSnip'},
+
+            -- Snippet Collection (Optional)
+            {'rafamadriz/friendly-snippets'},
+        },
+        config = configure('plugins.lsp-zero')
     }
 
     -- Autocompletion
@@ -86,24 +96,24 @@ packer.startup(function(use)
     }
 
     -- Fuzzy finder
-	use {
-		'nvim-telescope/telescope.nvim',
-		branch = '0.1.x',
-		requires = {
-			{'nvim-lua/plenary.nvim'},
+    use {
+        'nvim-telescope/telescope.nvim',
+        branch = '0.1.x',
+        requires = {
+            {'nvim-lua/plenary.nvim'},
             {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'},
-		},
+        },
         config = configure('plugins.telescope'),
-	}
+    }
 
     -- File explorer
-	use {
-		'kyazdani42/nvim-tree.lua',
+    use {
+        'kyazdani42/nvim-tree.lua',
         requires = {
             'nvim-tree/nvim-web-devicons',
         },
         config = configure('plugins.nvim-tree'),
-	}
+    }
 
     -- Better notes inside comments
     use {
