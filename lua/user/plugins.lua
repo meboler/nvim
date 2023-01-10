@@ -111,6 +111,12 @@ packer.startup(function(use)
         requires = 'nvim-lua/plenary.nvim',
         config = configure('plugins.todo-comments'),
     }
+
+    -- Zen mode
+    use {
+        'folke/zen-mode.nvim',
+        config = configure('plugins.zen-mode'),
+    }
 end)
 
 if boostrap_packer then
