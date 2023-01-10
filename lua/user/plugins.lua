@@ -59,6 +59,13 @@ packer.startup(function(use)
         config = configure('plugins.lualine'),
     }
 
+    -- Startup screen
+    use {
+        'goolord/alpha-nvim',
+        requires = 'nvim-tree/nvim-web-devicons',
+        config = configure('plugins.alpha'),
+    }
+
     -- Git status in gutter
     use {
         'lewis6991/gitsigns.nvim',
