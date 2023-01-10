@@ -1,14 +1,18 @@
 ---------------------------------
--- LSP-Zero Configuration File --
+-- Lsp-Zero Configuration File --
 ---------------------------------
 
-local status_ok, lspzero = pcall('require', 'lsp-zero')
+local status_ok, lsp = pcall(require, 'lsp-zero')
 if not status_ok then
     return
 end
 
--- Use default settings for now
-lspzero.preset('recommended')
+lsp.preset('recommended')
 
--- Apply settings
-lspzero.setup()
+--[[
+    Uncomment if you want to pass specifc args to an LS
+    lsp.configure()
+]]--
+
+lsp.setup()
+
