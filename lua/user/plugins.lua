@@ -59,6 +59,13 @@ packer.startup(function(use)
         config = configure('plugins.lualine'),
     }
 
+    -- Git status in gutter
+    use {
+        'lewis6991/gitsigns.nvim',
+        requires = 'nvim-lua/plenary.nvim',
+        config = configure('plugins.gitsigns'),
+    }
+
     -- Fuzzy finder
     use {
         'nvim-telescope/telescope.nvim',
@@ -73,9 +80,7 @@ packer.startup(function(use)
     -- File explorer
     use {
         'kyazdani42/nvim-tree.lua',
-        requires = {
-            'nvim-tree/nvim-web-devicons',
-        },
+        requires = 'nvim-tree/nvim-web-devicons',
         config = configure('plugins.nvim-tree'),
     }
 
