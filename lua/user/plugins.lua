@@ -66,6 +66,12 @@ packer.startup(function(use)
         config = configure('plugins.gitsigns'),
     }
 
+    -- Markers for indent level
+    use {
+        'lukas-reineke/indent-blankline.nvim',
+        config = configure('plugins.indent-blankline'),
+    }
+
     -- Fuzzy finder
     use {
         'nvim-telescope/telescope.nvim',
