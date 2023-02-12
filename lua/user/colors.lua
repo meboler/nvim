@@ -2,8 +2,6 @@
 -- Color scheme configuration file --
 -------------------------------------
 
-require('ayu').setup({
-    mirage = true,
-    overrides = {},
-})
-require('ayu').colorscheme()
+vim.opt.background = 'dark'
+-- vim.cmd('colorscheme oxocarbon')
+vim.cmd('colorscheme catppuccin-mocha')

@@ -17,7 +17,6 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
         packer_repo_url,
         install_path
     })
-    --vim.o.runtimepath = fn.stdpath('data') .. '/site/pack/*/start/*,' .. vim.o.runtimepath
     print('Done.')
     vim.cmd('packadd packer.nvim')
     boostrap_packer = true
@@ -35,12 +34,25 @@ local configure = function(path)
 end
 
 packer.startup(function(use)
-    -- Let packer manage itself
-	use 'wbthomason/packer.nvim'
+    -- Package Manager
+    use 'wbthomason/packer.nvim'
+
+    -- Highlight, edit, and navigate code
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = function()
+            pcall(require('nvim-treesitter.install').update {with_sync = true})
+        end,
+        config = configure('plugins.treesitter')
+    }
+    use {
+        'nvim-treesitter/nvim-treesitter-textobjects',
+        after = 'nvim-treesitter'
+    }
 
     -- Custom themes
-    use 'mattboler/neovim-ayaru'
-    use 'ofirgall/ofirkai.nvim'
+    use 'nyoom-engineering/oxocarbon.nvim'
+    use 'catppuccin/nvim'
 
     -- Pretty statusline
     use {
@@ -48,60 +60,58 @@ packer.startup(function(use)
         config = configure('plugins.lualine'),
     }
 
-    -- Indent guides
+    -- Startup screen
+    use {
+        'goolord/alpha-nvim',
+        requires = 'nvim-tree/nvim-web-devicons',
+        config = configure('plugins.alpha'),
+    }
+
+    -- Git status in gutter
+    use {
+        'lewis6991/gitsigns.nvim',
+        requires = 'nvim-lua/plenary.nvim',
+        config = configure('plugins.gitsigns'),
+    }
+
+    -- Markers for indent level
     use {
         'lukas-reineke/indent-blankline.nvim',
         config = configure('plugins.indent-blankline'),
     }
 
-    -- Dim inactive windows
-    use {
-        'sunjon/Shade.nvim',
-        config = configure('plugin.shade'),
-    }
-
-    -- Better text parsing
-    use {
-        'nvim-treesitter/nvim-treesitter',
-        config = configure('plugins.treesitter'),
-    }
-
     -- Fuzzy finder
-	use {
-		'nvim-telescope/telescope.nvim',
-		branch = '0.1.x',
-		requires = {
-			{'nvim-lua/plenary.nvim'},
-            {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'},
-		},
-        config = configure('plugins.telescope'),
-	}
-
-    -- Git status symbols
     use {
-        'lewis6991/gitsigns.nvim',
-		requires = {
-			{'nvim-lua/plenary.nvim'},
-		},
-        config = configure('plugins.gitsigns'),
+        'nvim-telescope/telescope.nvim',
+        branch = '0.1.x',
+        requires = {
+            {'nvim-lua/plenary.nvim'},
+            {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'},
+        },
+        config = configure('plugins.telescope'),
     }
 
     -- File explorer
-	use {
-		'kyazdani42/nvim-tree.lua',
-	  	requires = {
-			{'kyazdani42/nvim-web-devicons'},
-	  	},
-        config = configure('plugins.nvim-tree'),
-	}
-
-    -- Terminal management
     use {
-        'akinsho/toggleterm.nvim',
-        config = configure('plugins.toggleterm'),
+        'kyazdani42/nvim-tree.lua',
+        requires = 'nvim-tree/nvim-web-devicons',
+        config = configure('plugins.nvim-tree'),
     }
 
-    -- Autocompletion
+    -- Better notes inside comments
+    use {
+        'folke/todo-comments.nvim',
+        requires = 'nvim-lua/plenary.nvim',
+        config = configure('plugins.todo-comments'),
+    }
+
+    -- Zen mode
+    use {
+        'folke/zen-mode.nvim',
+        config = configure('plugins.zen-mode'),
+    }
+
+    -- LSP support
     use {
         'VonHeikemen/lsp-zero.nvim',
         requires = {
@@ -124,7 +134,6 @@ packer.startup(function(use)
         },
         config = configure('plugins.lsp-zero'),
     }
-
 end)
 
 if boostrap_packer then

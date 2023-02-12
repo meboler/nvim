@@ -1,12 +1,10 @@
------------------------------------------
--- Indent-Blankline Configuration File --
------------------------------------------
+------------------------------------------
+-- Indent-blanklines Configuration File --
+------------------------------------------
 
-local status_ok, blankline = pcall(require, 'indent_blankline')
+local status_ok, indent = pcall(require, 'indent_blankline')
 if not status_ok then
     return
 end
 
-blankline.setup({
-    use_treesitter = true
-})
+indent.setup()

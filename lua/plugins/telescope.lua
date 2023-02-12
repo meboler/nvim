@@ -9,7 +9,7 @@ end
 
 telescope.setup({
 	defaults = {
-		prompt_prefix = ">>",
+		prompt_prefix = ">> ",
 		selection_caret = "  ",
 		entry_prefix = "  ",
 		layout_strategy = 'horizontal',

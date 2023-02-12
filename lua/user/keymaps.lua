@@ -10,8 +10,8 @@ local function map(mode, lhs, rhs, opts)
     vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
--- Set the leader key
-vim.g.mapleader = ';'
+-- Set the leader key as space
+vim.g.mapleader = ' '
 
 ----
 -- Neovim-specific keybinds
@@ -33,9 +33,8 @@ map('n', '<leader>q', ':qa!<CR>')
 ----
 
 -- Telescope
-map('n', '<leader>ff', [[<Cmd>lua require('telescope.builtin').find_files()<CR>]])
-map('n', '<leader>fg', [[<Cmd>lua require('telescope.builtin').live_grep()<CR>]])
+map('n', '<leader>sf', [[<Cmd>lua require('telescope.builtin').find_files()<CR>]], {desc='[S]earch by [File]'})
+map('n', '<leader>sg', [[<Cmd>lua require('telescope.builtin').live_grep()<CR>]], {desc='[S]earch by [G]rep'})
 
 -- NvimTree
 map('n', '<leader>e', ':NvimTreeToggle<CR>')
-

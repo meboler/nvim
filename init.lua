@@ -3,11 +3,11 @@
 ---------------------------------------
 
 -- Author: Matt Boler
--- Email:  failtolaunch28@gmail.com
+-- Email: failtolaunch28@gmail.com
 
 -- Check for version compatibility
-if vim.version().minor < 7 then
-	vim.notify('Neovim 0.7+ required', vim.log.levels.ERROR, { title = 'Neovim Config' })
+if vim.version().minor < 8 then
+	vim.notify('Neovim 0.8+ required', vim.log.levels.ERROR, { title = 'Neovim Config' })
 end
 
 -- Load modules on command
