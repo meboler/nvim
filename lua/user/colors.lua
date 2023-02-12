@@ -3,5 +3,4 @@
 -------------------------------------
 
 vim.opt.background = 'dark'
--- vim.cmd('colorscheme oxocarbon')
-vim.cmd('colorscheme catppuccin-mocha')
+vim.cmd('colorscheme oxocarbon')
