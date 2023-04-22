@@ -52,6 +52,7 @@ packer.startup(function(use)
 
     -- Custom themes
     use 'nyoom-engineering/oxocarbon.nvim'
+    use 'ellisonleao/gruvbox.nvim'
 
     -- Pretty statusline
     use {
