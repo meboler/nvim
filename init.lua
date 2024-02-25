@@ -3,7 +3,7 @@
 ---------------------------------------
 
 -- Author: Matt Boler
--- Email: failtolaunch28@gmail.com
+-- Email: boler.matthew@gmail.com
 
 -- Check for version compatibility
 if vim.version().minor < 8 then

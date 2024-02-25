@@ -33,7 +33,7 @@ map('n', '<leader>q', ':qa!<CR>')
 ----
 
 -- Telescope
-map('n', '<leader>sf', [[<Cmd>lua require('telescope.builtin').find_files()<CR>]], {desc='[S]earch by [File]'})
+map('n', '<leader>sf', [[<Cmd>lua require('telescope.builtin').find_files()<CR>]], {desc='[S]earch by [F]ile'})
 map('n', '<leader>sg', [[<Cmd>lua require('telescope.builtin').live_grep()<CR>]], {desc='[S]earch by [G]rep'})
 
 -- NvimTree
