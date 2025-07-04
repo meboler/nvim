@@ -11,9 +11,10 @@ return {
 		config = function()
 			require("nvim-treesitter.configs").setup({
 				ensure_installed = {
-                    -- System utils
-                    "bash",
+                    -- Git bits
+                    "gitcommit",
                     "gitignore",
+                    "diff",
                     -- Build systems
                     "cmake",
                     "make",
@@ -28,13 +29,12 @@ return {
                     "markdown",
                     "rst",
                     -- Programming langauges
+                    "bash",
                     "c",
                     "cpp",
                     "julia",
-                    "haskell",
                     "lua",
                     "python",
-                    "rust",
                     "vim",
                 },
 				highlight = { enable = true },
