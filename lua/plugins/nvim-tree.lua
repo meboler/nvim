@@ -1,11 +1,9 @@
+-- TODO: Replace git status icons with neotree style modifiers
 return {
     {
         "nvim-tree/nvim-tree.lua",
         dependencies = {
-            --"nvim-tree/nvim-web-devicons",
-        },
-        opts = {
-
+            "nvim-tree/nvim-web-devicons",
         },
         config = function()
             require("nvim-tree").setup()

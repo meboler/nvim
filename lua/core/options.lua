@@ -15,8 +15,6 @@ opt.ignorecase = true
 opt.smartcase = true
 -- Disable highlighting search matches
 opt.hlsearch = false
--- Set max line length
-opt.textwidth = 80
 -- Wrap long lines
 opt.wrap = true
 -- Wrap on word boundaries
