@@ -9,7 +9,7 @@ return {
             require("nvim-tree").setup()
 			require("helpers.keys").map(
 				{ "n", "v" },
-				"<leader>E",
+				"<leader>e",
 				"<cmd>NvimTreeToggle<cr>",
 				"Toggle file explorer"
 			)
