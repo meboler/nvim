@@ -51,15 +51,13 @@ vim.opt.gdefault = true
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
--- LSP
-vim.lsp.inlay_hint.enable(true)
-
 -- -----------------------------------------------------------------------------------------------
 -- Plugin list
 -- -----------------------------------------------------------------------------------------------
 local plugins = {
     { "nvim-lua/plenary.nvim" },                             -- used by several other plugins
     { "gbprod/nord.nvim" },                                  -- Nord theme
+    { "nyoom-engineering/oxocarbon.nvim", build = false },   -- Oxocarbon theme
     { "nvim-tree/nvim-web-devicons", lazy = true },          -- used by lualine and nvim-tree
     { "nvim-lualine/lualine.nvim" },                         -- Status line
     { "nvim-tree/nvim-tree.lua" },                           -- File browser
@@ -70,17 +68,6 @@ local plugins = {
 
     -- TreeSitter
     { "nvim-treesitter/nvim-treesitter", priority = 1000, build = ":TSUpdate" },
-
-    -- LSP
-    { "mason-org/mason.nvim" },                      -- installs LSP servers
-    { "neovim/nvim-lspconfig" },                     -- configures LSPs
-    { "mason-org/mason-lspconfig.nvim" },            -- links installed to configured
-
-    {
-        "saghen/blink.cmp",                           -- Blink completion tool (LSP, snippets etc)
-        version = "1.*",                              -- see keymap here:
-        opts_extend = { "sources.default" }           -- https://cmp.saghen.dev/configuration/keymap.html#default
-    },
 }
 
 -- -----------------------------------------------------------------------------------------------
@@ -100,7 +87,7 @@ require("lazy").setup(plugins)
 -- -----------------------------------------------------------------------------------------------
 -- Plugin config
 -- -----------------------------------------------------------------------------------------------
-vim.cmd.colorscheme("nord")     -- activate the theme
+vim.cmd.colorscheme("oxocarbon")     -- activate the theme
 require("lualine").setup()      -- the status line
 require("nvim-tree").setup()    -- the tree file browser panel
 require("telescope").setup()    -- command menu
@@ -119,17 +106,6 @@ require("nvim-treesitter.config").setup({
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldlevel = 99
-
--- -----------------------------------------------------------------------------------------------
--- LSP
--- -----------------------------------------------------------------------------------------------
--- NB: These will FAIL if you don't have the language toolchains installed!
--- NB: Make sure to add more from this list!
--- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
-require("mason").setup()
-require("mason-lspconfig").setup({ 
-    ensure_installed = {}, -- Fill in where relevant
-})
 
 -- -----------------------------------------------------------------------------------------------
 -- Keymap settings
