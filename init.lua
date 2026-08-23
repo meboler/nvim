@@ -55,19 +55,49 @@ vim.opt.splitbelow = true
 -- Plugin list
 -- -----------------------------------------------------------------------------------------------
 local plugins = {
-    { "nvim-lua/plenary.nvim" },                             -- used by several other plugins
     { "gbprod/nord.nvim" },                                  -- Nord theme
     { "nyoom-engineering/oxocarbon.nvim", build = false },   -- Oxocarbon theme
-    { "nvim-tree/nvim-web-devicons", lazy = true },          -- used by lualine and nvim-tree
-    { "nvim-lualine/lualine.nvim" },                         -- Status line
-    { "nvim-tree/nvim-tree.lua" },                           -- File browser
 
-    -- Telescope command menu
-    { "nvim-telescope/telescope.nvim" },
-    { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+    -- status line
+    {
+        "nvim-lualine/lualine.nvim",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+    },
 
-    -- TreeSitter
+    -- file browser
+    {
+        "nvim-tree/nvim-tree.lua",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+    },
+    
+    -- better syntax highlighting
     { "nvim-treesitter/nvim-treesitter", priority = 1000, build = ":TSUpdate" },
+
+    -- fuzzy search menu
+    {
+        "nvim-telescope/telescope.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            -- optional but recommended
+            { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+        },
+    },
+    
+    -- start screen
+    {
+        "goolord/alpha-nvim",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        config = function()
+            local startify = require("alpha.themes.startify")
+            -- available: devicons, mini, default is mini
+            -- if provider not loaded and enabled is true, it will try to use another provider
+            startify.file_icons.provider = "devicons"
+            require("alpha").setup(
+                startify.config
+            )
+        end,
+    },
+
 }
 
 -- -----------------------------------------------------------------------------------------------
