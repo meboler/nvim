@@ -57,21 +57,27 @@ vim.opt.splitbelow = true
 local plugins = {
     { "gbprod/nord.nvim" },                                  -- Nord theme
     { "nyoom-engineering/oxocarbon.nvim", build = false },   -- Oxocarbon theme
+    
+    -- better syntax highlighting
+    { "nvim-treesitter/nvim-treesitter", priority = 1000, build = ":TSUpdate" },
 
     -- status line
     {
         "nvim-lualine/lualine.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },
+        config = function()
+            require("lualine").setup()
+        end,
     },
 
     -- file browser
     {
         "nvim-tree/nvim-tree.lua",
         dependencies = { "nvim-tree/nvim-web-devicons" },
+        config = function()
+            require("nvim-tree").setup()
+        end,
     },
-    
-    -- better syntax highlighting
-    { "nvim-treesitter/nvim-treesitter", priority = 1000, build = ":TSUpdate" },
 
     -- fuzzy search menu
     {
@@ -81,6 +87,9 @@ local plugins = {
             -- optional but recommended
             { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
         },
+        config = function()
+            require("telescope").setup()
+        end,
     },
     
     -- start screen
@@ -97,7 +106,6 @@ local plugins = {
             )
         end,
     },
-
 }
 
 -- -----------------------------------------------------------------------------------------------
@@ -118,9 +126,6 @@ require("lazy").setup(plugins)
 -- Plugin config
 -- -----------------------------------------------------------------------------------------------
 vim.cmd.colorscheme("oxocarbon")     -- activate the theme
-require("lualine").setup()      -- the status line
-require("nvim-tree").setup()    -- the tree file browser panel
-require("telescope").setup()    -- command menu
 
 -- -----------------------------------------------------------------------------------------------
 -- Treesitter (syntax highlighting and related stuff!)
@@ -167,8 +172,8 @@ vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
 
 -- Fuzzy finding
 local tele_builtin = require("telescope.builtin")
-vim.keymap.set("n", "<leader>ff", tele_builtin.git_files, {})  -- ,ff to find git files
-vim.keymap.set("n", "<leader>fa", tele_builtin.find_files, {}) -- ,fa to find any files
-vim.keymap.set("n", "<leader>fg", tele_builtin.live_grep, {})  -- ,fg to ripgrep
-vim.keymap.set("n", "<leader>fb", tele_builtin.buffers, {})    -- ,fb to see recent buffers
-vim.keymap.set("n", "<leader>fh", tele_builtin.help_tags, {})  -- ,fh to search help
+vim.keymap.set("n", "<leader>ff", tele_builtin.git_files, {})  -- ff to find git files
+vim.keymap.set("n", "<leader>fa", tele_builtin.find_files, {}) -- fa to find any files
+vim.keymap.set("n", "<leader>fg", tele_builtin.live_grep, {})  -- fg to ripgrep
+vim.keymap.set("n", "<leader>fb", tele_builtin.buffers, {})    -- fb to see recent buffers
+vim.keymap.set("n", "<leader>fh", tele_builtin.help_tags, {})  -- fh to search help
