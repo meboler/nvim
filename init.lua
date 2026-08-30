@@ -27,6 +27,7 @@ vim.o.background = "dark"
 
 -- Scrolling and UI settings
 vim.opt.cursorline = true
+vim.opt.colorcolumn = '80'
 vim.opt.signcolumn = 'yes'
 vim.opt.wrap = false
 vim.opt.sidescrolloff = 8
@@ -59,7 +60,11 @@ local plugins = {
     { "nyoom-engineering/oxocarbon.nvim", build = false },   -- Oxocarbon theme
     
     -- better syntax highlighting
-    { "nvim-treesitter/nvim-treesitter", priority = 1000, build = ":TSUpdate" },
+    {
+        "nvim-treesitter/nvim-treesitter", 
+        lazy = false, 
+        build = ":TSUpdate"
+    },
 
     -- status line
     {
@@ -99,7 +104,8 @@ local plugins = {
         config = function()
             local startify = require("alpha.themes.startify")
             -- available: devicons, mini, default is mini
-            -- if provider not loaded and enabled is true, it will try to use another provider
+            -- if provider not loaded and enabled is true, it will try to use 
+            -- another provider
             startify.file_icons.provider = "devicons"
             require("alpha").setup(
                 startify.config
